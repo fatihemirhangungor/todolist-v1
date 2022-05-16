@@ -64,6 +64,9 @@ app.get("/about", function(req, res) {
   res.render("about");
 })
 
-app.listen(3000, function() {
-  console.log("Server running on port 30000");
+// use port 3000 unless there exists a preconfigured port
+var port = process.env.PORT || 3000;
+
+app.listen(port, function() {
+  console.log("Server running on port 3000");
 })
