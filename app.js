@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://softdeveloperguy:asddsa123@cluster0.5i6xz.mongodb.net/?retryWrites=true&w=majority/todolistDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://softdeveloperguy:asddsa123@cluster0.5i6xz.mongodb.net/test", {useNewUrlParser: true});
 
 const itemsSchema = {
   name: String
@@ -108,6 +108,7 @@ app.post("/", function (req, res) {
 });
 
 app.post("/delete", function(req, res){
+  
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
@@ -137,4 +138,6 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
 }
-app.listen(port);
+app.listen(port, function(){
+  console.log("Server started successfully on port 8000");
+});
